@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CcAspAdoXamarinDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bien">
+          <Key>
+            <PropertyRef Name="IdBien" />
+          </Key>
+          <Property Name="IdBien" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateDeCreation" Type="datetime" Nullable="false" />
+          <Property Name="NomDuBien" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdProprietaire" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proprietaire">
+          <Key>
+            <PropertyRef Name="IdProprietaire" />
+          </Key>
+          <Property Name="IdProprietaire" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateDeCreation" Type="datetime" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Bien_Proprietaire">
+          <End Role="Proprietaire" Type="Self.Proprietaire" Multiplicity="1" />
+          <End Role="Bien" Type="Self.Bien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proprietaire">
+              <PropertyRef Name="IdProprietaire" />
+            </Principal>
+            <Dependent Role="Bien">
+              <PropertyRef Name="IdProprietaire" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CcAspAdoXamarinDbModelStoreContainer">
+          <EntitySet Name="Bien" EntityType="Self.Bien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proprietaire" EntityType="Self.Proprietaire" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Bien_Proprietaire" Association="Self.FK_Bien_Proprietaire">
+            <End Role="Proprietaire" EntitySet="Proprietaire" />
+            <End Role="Bien" EntitySet="Bien" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CcAspAdoXamarinDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bien">
+          <Key>
+            <PropertyRef Name="IdBien" />
+          </Key>
+          <Property Name="IdBien" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateDeCreation" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NomDuBien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdProprietaire" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Proprietaire" Relationship="Self.FK_Bien_Proprietaire" FromRole="Bien" ToRole="Proprietaire" />
+        </EntityType>
+        <EntityType Name="Proprietaire">
+          <Key>
+            <PropertyRef Name="IdProprietaire" />
+          </Key>
+          <Property Name="IdProprietaire" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateDeCreation" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Bien" Relationship="Self.FK_Bien_Proprietaire" FromRole="Proprietaire" ToRole="Bien" />
+        </EntityType>
+        <Association Name="FK_Bien_Proprietaire">
+          <End Role="Proprietaire" Type="Self.Proprietaire" Multiplicity="1" />
+          <End Role="Bien" Type="Self.Bien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proprietaire">
+              <PropertyRef Name="IdProprietaire" />
+            </Principal>
+            <Dependent Role="Bien">
+              <PropertyRef Name="IdProprietaire" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CcAspAdoXamarinDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bien" EntityType="Self.Bien" />
+          <EntitySet Name="Proprietaire" EntityType="Self.Proprietaire" />
+          <AssociationSet Name="FK_Bien_Proprietaire" Association="Self.FK_Bien_Proprietaire">
+            <End Role="Proprietaire" EntitySet="Proprietaire" />
+            <End Role="Bien" EntitySet="Bien" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CcAspAdoXamarinDbModelStoreContainer" CdmEntityContainer="CcAspAdoXamarinDbEntities">
+          <EntitySetMapping Name="Bien">
+            <EntityTypeMapping TypeName="CcAspAdoXamarinDbModel.Bien">
+              <MappingFragment StoreEntitySet="Bien">
+                <ScalarProperty Name="IdBien" ColumnName="IdBien" />
+                <ScalarProperty Name="DateDeCreation" ColumnName="DateDeCreation" />
+                <ScalarProperty Name="NomDuBien" ColumnName="NomDuBien" />
+                <ScalarProperty Name="IdProprietaire" ColumnName="IdProprietaire" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proprietaire">
+            <EntityTypeMapping TypeName="CcAspAdoXamarinDbModel.Proprietaire">
+              <MappingFragment StoreEntitySet="Proprietaire">
+                <ScalarProperty Name="IdProprietaire" ColumnName="IdProprietaire" />
+                <ScalarProperty Name="DateDeCreation" ColumnName="DateDeCreation" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
