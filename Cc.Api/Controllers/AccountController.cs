@@ -16,11 +16,10 @@ namespace Cc.Api.Controllers
         private CcAspAdoXamarinDbEntities db = new CcAspAdoXamarinDbEntities();
 
         [HttpGet]
-        public IHttpActionResult ListeProprietaire(int index = 0, int taille = 10)
+        public IHttpActionResult ListerProprietaire(int index = 0, int taille = 10)
         {
             try
             {
-
                 var proprietaires = db.Proprietaire
                     .OrderByDescending(x => x.DateDeCreation)
                     .Skip(index * taille).Take(taille).ToList();
@@ -38,20 +37,12 @@ namespace Cc.Api.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult ListeBien(int index = 0, int taille = 10)
+        public IHttpActionResult DetailsProprietaire(int id)
         {
             try
             {
-
-                var biens = db.Proprietaire
-                    .OrderByDescending(x => x.DateDeCreation)
-                    .Skip(index * taille).Take(taille).ToList();
-                return Ok(biens);
-            }
-            catch (DbUpdateException ex)
-            {
-                var exception = ex.InnerException?.InnerException as SqlException;
-                return BadRequest(exception?.Message);
+                var proprietaire = db.Proprietaire.Find(id);
+                return Ok(proprietaire);
             }
             catch (Exception ex)
             {
