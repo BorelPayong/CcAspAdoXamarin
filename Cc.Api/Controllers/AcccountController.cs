@@ -10,9 +10,9 @@ using System.Web.Http;
 
 namespace Cc.Api.Controllers
 {
-    public class AcccountController : ApiController
+    public class AcccountController : BaseController
     {
-        private CcAspAdoXamarinDbEntities db = new CcAspAdoXamarinDbEntities();
+        protected CcAspAdoXamarinDbEntities db = new CcAspAdoXamarinDbEntities();
 
         [HttpGet]
         public IHttpActionResult ListerProprietaire()
