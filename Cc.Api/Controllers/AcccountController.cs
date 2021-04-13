@@ -4,25 +4,23 @@ using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Web;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
-using System.Web.Mvc;
-using HttpGetAttribute = System.Web.Http.HttpGetAttribute;
 
 namespace Cc.Api.Controllers
 {
-    public class AccountController : Controller
+    public class AcccountController : ApiController
     {
         private CcAspAdoXamarinDbEntities db = new CcAspAdoXamarinDbEntities();
 
         [HttpGet]
-        public IHttpActionResult ListerProprietaire(int index = 0, int taille = 10)
+        public IHttpActionResult ListerProprietaire()
         {
             try
             {
                 var proprietaires = db.Proprietaire
-                    .OrderByDescending(x => x.DateDeCreation)
-                    .Skip(index * taille).Take(taille).ToList();
+                    .OrderByDescending(x => x.DateDeCreation).ToList();
                 return Ok(proprietaires);
             }
             catch (DbUpdateException ex)
