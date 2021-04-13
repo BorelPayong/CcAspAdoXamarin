@@ -12,14 +12,14 @@ namespace Cc.Api.Controllers
 {
     public class AcccountController : BaseController
     {
-        protected CcAspAdoXamarinDbEntities db = new CcAspAdoXamarinDbEntities();
+        protected CcAspAdoXamarinDbEntities Db = new CcAspAdoXamarinDbEntities();
 
         [HttpGet]
         public IHttpActionResult ListerProprietaire()
         {
             try
             {
-                var proprietaires = db.Proprietaire
+                var proprietaires = Db.Proprietaire
                     .OrderByDescending(x => x.DateDeCreation).ToList();
                 return Ok(proprietaires);
             }
@@ -39,7 +39,7 @@ namespace Cc.Api.Controllers
         {
             try
             {
-                var proprietaire = db.Proprietaire.Find(id);
+                var proprietaire = Db.Proprietaire.Find(id);
                 return Ok(proprietaire);
             }
             catch (Exception ex)
