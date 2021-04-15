@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0E4527AC-612B-4B69-A23B-80AA252A98B7}</ProjectGuid>
+    <ProjectGuid>{31D975FD-0CF1-48F4-BA76-03B2D4AF7579}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{c9e5eea5-ca05-42a1-839b-61506e0a37df}</TemplateGuid>
     <OutputType>Library</OutputType>
@@ -86,11 +86,5 @@
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Cc.Xamarin\Cc.Xamarin.csproj">
-      <Project>{3D2C46C1-CBD7-45B5-99E7-1C644D86177A}</Project>
-      <Name>Cc.Xamarin</Name>
-    </ProjectReference>
-  </ItemGroup>
- <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
