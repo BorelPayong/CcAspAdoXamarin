@@ -10,12 +10,18 @@ using System.Web.Http;
 
 namespace Cc.Api.Controllers
 {
-    public class AcccountController : BaseController
+    public class AcccountController : ApiController
     {
-        protected CcAspAdoXamarinDbEntities Db = new CcAspAdoXamarinDbEntities();
+        private CcAspAdoXamarinDbEntities Db = new CcAspAdoXamarinDbEntities();
+
+        protected override void Dispose(bool disposing)
+        {
+            Db.Dispose();
+            base.Dispose(disposing);
+        }
 
         [HttpGet]
-        public IHttpActionResult ListerProprietaire()
+        public IHttpActionResult ListeProprietaire()
         {
             try
             {

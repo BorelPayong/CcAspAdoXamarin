@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6A6F21BD-4B71-4BC9-943E-357575CB50E0}</ProjectGuid>
+    <ProjectGuid>{0E4527AC-612B-4B69-A23B-80AA252A98B7}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{c9e5eea5-ca05-42a1-839b-61506e0a37df}</TemplateGuid>
     <OutputType>Library</OutputType>
@@ -88,7 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cc.Xamarin\Cc.Xamarin.csproj">
-      <Project>{451B5EFA-47E5-404F-B52A-921A702DF792}</Project>
+      <Project>{3D2C46C1-CBD7-45B5-99E7-1C644D86177A}</Project>
       <Name>Cc.Xamarin</Name>
     </ProjectReference>
   </ItemGroup>
